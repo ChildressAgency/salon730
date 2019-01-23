@@ -1,0 +1,92 @@
+///////////////////////////////////////////////////////////////////////////////
+// 576                                                                       //
+///////////////////////////////////////////////////////////////////////////////
+
+@media screen and (min-width: 576px)
+    .container
+        max-width: 540px
+
+        &--fluid
+            max-width: 100%
+
+
+///////////////////////////////////////////////////////////////////////////////
+// 768                                                                       //
+///////////////////////////////////////////////////////////////////////////////
+
+@media screen and (min-width: 768px)
+    .container
+        max-width: 720px
+
+        &--fluid
+            max-width: 100%
+
+        &--thin
+            max-width: 576px
+
+    .navbar
+        &__toggler
+            display: none
+
+        &__nav
+            flex-direction: row
+            max-height: unset !important // sass-lint:disable-line no-important
+
+        &__item
+            margin-left: 15px
+            margin-right: 15px
+
+        &__drop
+            &:hover
+                & > .navbar__drop-menu
+                    display: block
+
+
+///////////////////////////////////////////////////////////////////////////////
+// 992                                                                       //
+///////////////////////////////////////////////////////////////////////////////
+
+@media screen and (min-width: 992px)
+    .container
+        max-width: 960px
+
+        &--fluid
+            max-width: 100%
+
+        &--thin
+            max-width: 793px
+
+    .header
+        flex-direction: row
+
+        &__brand
+            margin-bottom: 30px
+
+        &__links
+            align-items: flex-end
+
+        &__call
+            margin-bottom: 15px
+
+
+///////////////////////////////////////////////////////////////////////////////
+// 1200                                                                       //
+///////////////////////////////////////////////////////////////////////////////
+
+@media screen and (min-width: 1200px)
+    .container
+        max-width: 1140px
+
+        &--fluid
+            max-width: 100%
+
+        &--thin
+            max-width: 960px
+
+    .header
+        &__links
+            align-items: center
+            flex-direction: row-reverse
+
+        &__nav
+            margin-right: 30px

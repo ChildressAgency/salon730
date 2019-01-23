@@ -1,0 +1,38 @@
+// sass-lint:disable no-duplicate-properties function-name-format
+
+%font-roboto
+    font-family: 'Roboto', sans-serif
+
+%font-roboto-bold
+    font-family: 'Roboto', sans-serif
+    font-weight: 700
+
+%font-roboto-condensed
+    font-family: 'Roboto Condensed', sans-serif
+    font-weight: 700
+
+%font-taviraj
+    font-family: 'Taviraj', serif
+
+%font-taviraj-bold
+    font-family: 'Taviraj', serif
+    font-weight: 700
+
+%font-taviraj-light
+    font-family: 'Taviraj', serif
+    font-weight: 400
+
+
+$color-primary: #8bc53f
+
+$color-black: #000
+$color-white: #fff
+
+=font-size($size)
+    font-size: $size + px
+
+=fluid-font($min-font, $max-font, $min-viewport: 280, $max-viewport: 576)
+    font-size: calc((#{$min-font} * 1px) + #{strip-unit($max-font - $min-font)} * ((100vw - (#{$min-viewport} * 1px)) / #{strip-unit($max-viewport - $min-viewport)}))
+
+@function strip-unit($value)
+    @return $value / ($value * 0 + 1)
