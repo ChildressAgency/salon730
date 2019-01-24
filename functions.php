@@ -77,5 +77,5 @@
 
 	// include "functions/options_page.php";
 	include "functions/custom-nav-walker.php";
-	// include "functions/gutenberg-blocks.php";
+	include "functions/gutenberg-blocks.php";
 ?>
