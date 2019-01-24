@@ -75,7 +75,7 @@
 	}
 	add_action( 'enqueue_block_editor_assets', 'custom_editor_styles' );
 
-	// include "functions/options_page.php";
+	include "functions/options_page.php";
 	include "functions/custom-nav-walker.php";
 	include "functions/gutenberg-blocks.php";
 ?>

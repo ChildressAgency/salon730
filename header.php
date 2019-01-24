@@ -30,12 +30,12 @@
     
     <header class="header">
         <div class="header__brand">
-            <img src="http://dev.childressagency.com/salon730/wp-content/uploads/2019/01/Logo.png" />
+            <img src="<?php echo get_option( 'logo' ); ?>" alt="Salon 730"/>
         </div>
         <div class="header__links">
             <a class="header__call" href="tel:540-373-6040">
                 <p>CALL TODAY</p>
-                <p class="header__number">540-373-6040</p>
+                <p class="header__number"><?php echo get_option( 'phone' ); ?></p>
             </a>
             <div class="header__nav">
                 <button class="navbar__toggler" type="button" data-target="#main-menu">
