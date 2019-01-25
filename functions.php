@@ -84,6 +84,11 @@
 					'color'		=> '#8bc53f'
 				),
 				array(
+					'name'		=> 'Light Green',
+					'slug'		=> 'light-green',
+					'color'		=> '#98ca50'
+				),
+				array(
 					'name'		=> 'Dark Grey',
 					'slug'		=> 'dark-grey',
 					'color'		=> '#4d4d4d'
