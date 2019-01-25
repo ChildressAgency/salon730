@@ -75,6 +75,34 @@
 	}
 	add_action( 'enqueue_block_editor_assets', 'custom_editor_styles' );
 
+	function salon730_color_palette(){
+		add_theme_support(
+			'editor-color-palette', array(
+				array(
+					'name'		=> 'Green',
+					'slug'		=> 'green',
+					'color'		=> '#8bc53f'
+				),
+				array(
+					'name'		=> 'Dark Grey',
+					'slug'		=> 'dark-grey',
+					'color'		=> '#4d4d4d'
+				),
+				array(
+					'name'		=> 'Black',
+					'slug'		=> 'black',
+					'color'		=> '#000000'
+				),
+				array(
+					'name'		=> 'White',
+					'slug'		=> 'white',
+					'color'		=> '#ffffff'
+				),
+			)
+		);
+	}
+	add_action( 'after_setup_theme', 'salon730_color_palette' );
+
 	include "functions/options_page.php";
 	include "functions/custom-nav-walker.php";
 	include "functions/gutenberg-blocks.php";
