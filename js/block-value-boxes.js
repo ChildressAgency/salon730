@@ -1,6 +1,6 @@
 registerBlockType( 'childress/value-boxes', {
     title: 'Value Boxes',
-    icon: 'screenoptions',
+    icon: 'forms',
     category: 'custom-blocks',
 
     attributes: {
