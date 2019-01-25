@@ -1,0 +1,22 @@
+@import '../_variables.sass'
+
+.wp-block-childress-value-boxes
+    flex-direction: row
+
+    .value-boxes
+        &__text
+            grid-column: unset
+            grid-row: unset
+
+        &__image--lower
+            grid-column: unset
+            grid-row: unset
+
+    .components-button
+        height: 100%
+        object-fit: cover
+        width: 100%
+
+    .editor-plain-text
+        @extend %font-roboto
+        text-align: center

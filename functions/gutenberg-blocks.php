@@ -59,3 +59,33 @@ function hero_box_block(){
     ) );
 }
 add_action( 'init', 'hero_box_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// VALUE BOXES                                                               //
+///////////////////////////////////////////////////////////////////////////////
+function value_boxes_block(){
+    wp_register_script(
+        'value-boxes-script',
+        get_template_directory_uri() . '/js/block-value-boxes.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'value-boxes-editor-style',
+        get_template_directory_uri() . '/css/block-value-boxes-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'value-boxes-style',
+        get_template_directory_uri() . '/css/block-value-boxes-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/value-boxes', array(
+        'editor_script' => 'value-boxes-script',
+        'editor_style'  => 'value-boxes-editor-style',
+        'style'  => 'value-boxes-style',
+    ) );
+}
+add_action( 'init', 'value_boxes_block', 10, 0 );
