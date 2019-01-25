@@ -16,12 +16,8 @@ registerBlockType( 'childress/hero-box', {
         const { backgroundUrl, backgroundId } = attributes;
 
         return (
-            <div className={ className }>
-                <div className="hero-box"
-                    style={{ 
-                        backgroundImage: `url(${ backgroundUrl })`,
-                        padding: '15px'
-                    }} >
+            <div className={ className } style={{ backgroundImage: `url(${ backgroundUrl })` }}>
+                <div className="hero-box">
                     <MediaUpload
                         onSelect={ media => { setAttributes({ backgroundUrl: media.url, backgroundId: media.id }); } }
                         type="image"
