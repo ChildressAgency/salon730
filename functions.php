@@ -46,7 +46,7 @@
 	// load fonts
 	function load_fonts() {
 		wp_enqueue_style( 'font-awesome', '//use.fontawesome.com/releases/v5.3.1/css/all.css' );
-		wp_enqueue_style( 'fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto:400,700|Taviraj:400,500,700' );
+		wp_enqueue_style( 'fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto:400,700|Taviraj:400,500,500i,700' );
 	}
 	add_action( 'wp_enqueue_scripts', 'load_fonts' );
 
