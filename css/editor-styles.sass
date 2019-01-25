@@ -18,3 +18,9 @@
             background-color: $color-white
             border: 2px solid $color-primary
             color: $color-primary
+
+div,
+div::before, //sass-lint:disable-line force-pseudo-nesting
+div::after //sass-lint:disable-line force-pseudo-nesting
+    background-position: center center
+    background-size: cover
