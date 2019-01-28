@@ -89,3 +89,33 @@ function value_boxes_block(){
     ) );
 }
 add_action( 'init', 'value_boxes_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// IMAGE LINKS                                                               //
+///////////////////////////////////////////////////////////////////////////////
+function image_links_block(){
+    wp_register_script(
+        'image-links-script',
+        get_template_directory_uri() . '/js/block-image-links.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'image-links-editor-style',
+        get_template_directory_uri() . '/css/block-image-links-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'image-links-style',
+        get_template_directory_uri() . '/css/block-image-links-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/image-links', array(
+        'editor_script' => 'image-links-script',
+        'editor_style'  => 'image-links-editor-style',
+        'style'  => 'image-links-style',
+    ) );
+}
+add_action( 'init', 'image_links_block', 10, 0 );
