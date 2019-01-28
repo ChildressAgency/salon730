@@ -29,4 +29,17 @@ $(document).ready(function(){
         arrows: false,
         autoplaySpeed: 5000
     });
+
+    $( '.instagram__feed' ).slick({
+        slidesToShow:       5,
+        slidesToScroll:     1,
+        infinite:           true,
+        variableWidth:      true,
+        dots:               false,
+        arrows:             true,
+        nextArrow:          $( '.instagram__next' ),
+        prevArrow:          $( '.instagram__prev' ),
+        autoplay:           true,
+        autoplaySpeed:      3000
+    });
 });

@@ -6,20 +6,22 @@
     add_action( 'admin_menu', 'theme_options' );
 
     function register_mysettings() { // whitelist options
-      register_setting( 'them_options', 'logo' );
-      register_setting( 'them_options', 'address' );
-      register_setting( 'them_options', 'phone' );
-      register_setting( 'them_options', 'email' );
-      register_setting( 'them_options', 'twitter' );
-      register_setting( 'them_options', 'facebook' );
-      register_setting( 'them_options', 'linkedin' );
-      register_setting( 'them_options', 'hours-monday' );
-      register_setting( 'them_options', 'hours-tuesday' );
-      register_setting( 'them_options', 'hours-wednesday' );
-      register_setting( 'them_options', 'hours-thursday' );
-      register_setting( 'them_options', 'hours-friday' );
-      register_setting( 'them_options', 'hours-saturday' );
-      register_setting( 'them_options', 'hours-sunday' );
+      register_setting( 'theme_options', 'logo' );
+      register_setting( 'theme_options', 'address' );
+      register_setting( 'theme_options', 'phone' );
+      register_setting( 'theme_options', 'email' );
+      register_setting( 'theme_options', 'twitter' );
+      register_setting( 'theme_options', 'facebook' );
+      register_setting( 'theme_options', 'linkedin' );
+      register_setting( 'theme_options', 'instagram' );
+      register_setting( 'theme_options', 'insta_access_token' );
+      register_setting( 'theme_options', 'hours-monday' );
+      register_setting( 'theme_options', 'hours-tuesday' );
+      register_setting( 'theme_options', 'hours-wednesday' );
+      register_setting( 'theme_options', 'hours-thursday' );
+      register_setting( 'theme_options', 'hours-friday' );
+      register_setting( 'theme_options', 'hours-saturday' );
+      register_setting( 'theme_options', 'hours-sunday' );
     }
     add_action( 'admin_init', 'register_mysettings' );
 
@@ -34,8 +36,8 @@
         <div class="wrap">
             <h1>Theme Options</h1>
             <form method="post" action="options.php">
-                <?php settings_fields( 'them_options' ); ?>
-                <?php do_settings_sections( 'them_options' ); ?>
+                <?php settings_fields( 'theme_options' ); ?>
+                <?php do_settings_sections( 'theme_options' ); ?>
 
                 <table class="form-table">
                     <tr valign="top">
@@ -108,6 +110,16 @@
                     <tr valign="top">
                         <th scope="row">Linkedin</th>
                         <td><input type="text" name="linkedin" value="<?php echo esc_attr( get_option('linkedin') ); ?>" size="60" /></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Instagram</th>
+                        <td><input type="text" name="instagram" value="<?php echo esc_attr( get_option('instagram') ); ?>" size="60" /></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <th scope="row">Instagram Access Token</th>
+                        <td><input type="text" name="insta_access_token" value="<?php echo esc_attr( get_option('insta_access_token') ); ?>" size="60" /></td>
                     </tr>
                 </table>
 

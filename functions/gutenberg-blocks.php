@@ -119,3 +119,71 @@ function image_links_block(){
     ) );
 }
 add_action( 'init', 'image_links_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// INSTAGRAM FEED                                                            //
+///////////////////////////////////////////////////////////////////////////////
+function insta_feed_block(){
+    wp_register_script(
+        'insta-feed-script',
+        get_template_directory_uri() . '/js/block-insta-feed.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'insta-feed-editor-style',
+        get_template_directory_uri() . '/css/block-insta-feed-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'insta-feed-style',
+        get_template_directory_uri() . '/css/block-insta-feed-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/insta-feed', array(
+        'editor_script' => 'insta-feed-script',
+        'editor_style'  => 'insta-feed-editor-style',
+        'style'  => 'insta-feed-style',
+        'render_callback' => 'insta_feed_callback'
+    ) );
+}
+add_action( 'init', 'insta_feed_block', 10, 0 );
+
+function insta_feed_callback(){
+    $result = '';
+
+    $result .= '<div class="instagram">
+        <div class="instagram__controls">
+            <a class="instagram__link" target="blank" href="' . get_option( 'instagram' ) . '"><i class="fab fa-instagram"></i></a>
+            <div class="instagram__next"><div class="instagram__triangle"></div></div>
+            <div class="instagram__prev"><div class="instagram__triangle"></div></div>
+        </div>
+
+        <div class="instagram__feed">';
+
+    function fetchData($url){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return $result;
+    }
+            
+    $url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' . get_option( 'insta_access_token' );
+    $data = fetchData( $url );
+    
+    $data = json_decode($data);
+    foreach($data->data as $post) {
+        $result .= '<a target="blank" href="' . $post->link . '"><img src="' . $post->images->low_resolution->url . '" /></a>';
+    }
+    $result .= '</div>
+
+    </div>';
+
+    return $result;
+}
+
