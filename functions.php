@@ -35,9 +35,11 @@
 	
 	// load styles
 	function salon730_styles(){
+		wp_register_style('demandforce', '//www.demandforce.com/widget/css/widget.css');
 		wp_register_style('slick', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
 		wp_register_style('salon730', get_template_directory_uri() . '/style.css');
 
+		wp_enqueue_style('demandforce');
 		wp_enqueue_style('slick');
 		wp_enqueue_style('salon730');
 	}

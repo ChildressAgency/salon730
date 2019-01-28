@@ -274,6 +274,36 @@ h6
     color: $color-white
 
 
+
+#D3cpWidget // sass-lint:disable-line no-ids
+    width: 100%
+
+    .d3cp
+        &_feature_wrap, // sass-lint:disable-line class-name-format
+        &_review_order, // sass-lint:disable-line class-name-format
+        &_review_box, // sass-lint:disable-line class-name-format
+        &_review_seal_wrap, // sass-lint:disable-line class-name-format
+        &_review_date, // sass-lint:disable-line class-name-format
+        &_review_pic, // sass-lint:disable-line class-name-format
+        &_df_seal_widget // sass-lint:disable-line class-name-format
+            display: none
+
+    .d3cp_review_box // sass-lint:disable-line class-name-format
+        &:nth-child(4),
+        &:nth-child(6)
+            display: block
+
+    .d3cp_review_main // sass-lint:disable-line class-name-format
+        width: auto
+
+    & > hr
+        display: none
+
+    & > hr:nth-of-type(2) // sass-lint:disable-line force-pseudo-nesting
+        display: block
+
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // FOOTER                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
