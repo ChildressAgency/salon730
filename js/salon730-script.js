@@ -21,6 +21,9 @@ $(document).ready(function(){
         }
     });
 
+    /*
+     * SLIDERS
+     */
     $('.featured-slider').slick({
         dots: false,
         infinite: true,
@@ -42,4 +45,30 @@ $(document).ready(function(){
         autoplay:           true,
         autoplaySpeed:      3000
     });
+
+    /*
+     * ACTION BOXES HEADINGS
+     *
+     * Ensure the headings of adjacent action boxes are the same height
+     */
+    function adjustActionBoxTitleHeight(){
+        $actionbox_title_height = 0;
+        $( '.action-boxes' ).children().each( function(){
+            $( this ).find( '.action-box__title' ).height( 'auto' );
+            $height = $( this ).find( '.action-box__title' ).height();
+
+            if( $height > $actionbox_title_height ){
+                $actionbox_title_height = $height;
+            }
+        } );
+
+        $( '.action-boxes' ).children().each( function(){
+            $( this ).find( '.action-box__title' ).height( $actionbox_title_height );
+        } );
+    }
+    adjustActionBoxTitleHeight();
+    $( window ).resize( function(){
+        adjustActionBoxTitleHeight();
+    } );
+
 });

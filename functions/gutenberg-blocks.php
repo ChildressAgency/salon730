@@ -187,3 +187,33 @@ function insta_feed_callback(){
     return $result;
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+// ACTION BOXES                                                              //
+///////////////////////////////////////////////////////////////////////////////
+function action_boxes_block(){
+    wp_register_script(
+        'action-boxes-script',
+        get_template_directory_uri() . '/js/block-action-boxes.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'action-boxes-editor-style',
+        get_template_directory_uri() . '/css/block-action-boxes-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'action-boxes-style',
+        get_template_directory_uri() . '/css/block-action-boxes-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/action-boxes', array(
+        'editor_script' => 'action-boxes-script',
+        'editor_style'  => 'action-boxes-editor-style',
+        'style'  => 'action-boxes-style',
+    ) );
+}
+add_action( 'init', 'action_boxes_block', 10, 0 );
