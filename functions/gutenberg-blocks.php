@@ -217,3 +217,33 @@ function action_boxes_block(){
     ) );
 }
 add_action( 'init', 'action_boxes_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// PRICE LIST                                                                //
+///////////////////////////////////////////////////////////////////////////////
+function price_list_block(){
+    wp_register_script(
+        'price-list-script',
+        get_template_directory_uri() . '/js/block-price-list.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'price-list-editor-style',
+        get_template_directory_uri() . '/css/block-price-list-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'price-list-style',
+        get_template_directory_uri() . '/css/block-price-list-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/price-list', array(
+        'editor_script' => 'price-list-script',
+        'editor_style'  => 'price-list-editor-style',
+        'style'  => 'price-list-style',
+    ) );
+}
+add_action( 'init', 'price_list_block', 10, 0 );
