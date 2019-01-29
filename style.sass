@@ -302,6 +302,21 @@ h6
     & > hr:nth-of-type(2) // sass-lint:disable-line force-pseudo-nesting
         display: block
 
+.wp-block-separator
+    background-color: $color-primary
+    border: 0
+    height: 2px
+
+    &.is-style-wide
+        width: 90%
+
+    &.is-style-dots
+        &::before
+            color: $color-primary
+
+    &:not(.is-style-wide):not(.is-style-dots) // sass-lint:disable-line force-pseudo-nesting
+        max-width: 200px
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
