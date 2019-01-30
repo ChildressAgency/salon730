@@ -69,10 +69,18 @@ registerBlockType( 'childress/price-item', {
     save( { attributes } ) {
         const { label, price } = attributes;
 
-        return (
-            <div className="price-list__item">
-                <p>{ label }<span></span>${ price }</p>
-            </div>
-        );
+        if( price ){
+            return (
+                <div className="price-list__item">
+                    <p>{ label }<span></span>${ price }</p>
+                </div>
+            );
+        } else {
+            return (
+                <div className="price-list__item">
+                    <p>{ label }</p>
+                </div>
+            );
+        }
     },
 } );
