@@ -71,4 +71,27 @@ $(document).ready(function(){
         adjustActionBoxTitleHeight();
     } );
 
+
+    /*
+     * COLLAPSIBLE BLOCK
+     */
+    $( '.collapsible__title' ).click(function(){
+        $content = $( this ).next();
+        $height = 0;
+        $content.children().each(function(){
+        // $( this ).next().children().each(function(){
+            $height += $( this ).outerHeight() + parseInt( $( this ).css('marginTop') ) + parseInt( $( this ).css('marginBottom') );
+        });
+
+        if( $content.hasClass( 'collapsible--open' ) ){
+            $content.css( 'max-height', '0' );
+            $content.removeClass( 'collapsible--open' );
+            $( this ).find( '.collapsible__arrow' ).css( 'transform', 'rotate(0deg)' );
+        } else {
+            $content.addClass( 'collapsible--open' );
+            $content.css( 'max-height', $height + 'px' );
+            $( this ).find( '.collapsible__arrow' ).css( 'transform', 'rotate(90deg)' );
+        }
+    });
+
 });

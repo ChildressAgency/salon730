@@ -247,3 +247,33 @@ function price_list_block(){
     ) );
 }
 add_action( 'init', 'price_list_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// COLLAPSIBLE                                                               //
+///////////////////////////////////////////////////////////////////////////////
+function collapsible_block(){
+    wp_register_script(
+        'collapsible-script',
+        get_template_directory_uri() . '/js/block-collapsible.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'collapsible-editor-style',
+        get_template_directory_uri() . '/css/block-collapsible-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'collapsible-style',
+        get_template_directory_uri() . '/css/block-collapsible-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/collapsible', array(
+        'editor_script' => 'collapsible-script',
+        'editor_style'  => 'collapsible-editor-style',
+        'style'  => 'collapsible-style',
+    ) );
+}
+add_action( 'init', 'collapsible_block', 10, 0 );
