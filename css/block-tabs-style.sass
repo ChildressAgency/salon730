@@ -1,0 +1,23 @@
+@import '../_variables.sass'
+
+.wp-block-childress-tabs
+    .tabs
+        &__titles
+            display: flex
+            margin-bottom: 30px
+
+        &__title
+            background-color: $color-white
+            color: $color-black
+            cursor: pointer
+            flex: 1
+            padding: 15px 30px
+            text-align: center
+
+            &--active
+                background-color: $color-primary
+                color: $color-white
+
+.wp-block-childress-tab
+    &:nth-child(2)
+        display: none

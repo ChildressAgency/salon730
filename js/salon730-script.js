@@ -79,7 +79,6 @@ $(document).ready(function(){
         $content = $( this ).next();
         $height = 0;
         $content.children().each(function(){
-        // $( this ).next().children().each(function(){
             $height += $( this ).outerHeight() + parseInt( $( this ).css('marginTop') ) + parseInt( $( this ).css('marginBottom') );
         });
 
@@ -93,5 +92,38 @@ $(document).ready(function(){
             $( this ).find( '.collapsible__arrow' ).css( 'transform', 'rotate(90deg)' );
         }
     });
+
+    /*
+     * TABS
+     */
+    $( '.tabs__title' ).click( function(){
+        if( $( this ).hasClass( 'tabs__title--a' ) ){
+            $thisTab = $( this ).parent().next().children().eq(0);
+            $thatTab = $( this ).parent().next().children().eq(1);
+
+            $thisTab.css( 'display', 'block' );
+            // $( this ).css( 'background-color', '#8bc53f' );
+            // $( this ).css( 'color', '#fff' );
+            $( this ).addClass( 'tabs__title--active' );
+
+            $thatTab.css( 'display', 'none' );
+            $( this ).next().removeClass( 'tabs__title--active' );
+            // $( this ).next().css( 'background-color', '#fff' );
+            // $( this ).next().css( 'color', '#000' );
+        } else {
+            $thisTab = $( this ).parent().next().children().eq(1);
+            $thatTab = $( this ).parent().next().children().eq(0);
+
+            $thisTab.css( 'display', 'block' );
+            $( this ).addClass( 'tabs__title--active' );
+            // $( this ).css( 'background-color', '#8bc53f' );
+            // $( this ).css( 'color', '#fff' );
+
+            $thatTab.css( 'display', 'none' );
+            $( this ).prev().removeClass( 'tabs__title--active' );
+            // $( this ).prev().css( 'background-color', '#fff' );
+            // $( this ).prev().css( 'color', '#000' );
+        }
+    } );
 
 });

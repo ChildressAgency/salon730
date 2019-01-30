@@ -277,3 +277,33 @@ function collapsible_block(){
     ) );
 }
 add_action( 'init', 'collapsible_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// TABS                                                                      //
+///////////////////////////////////////////////////////////////////////////////
+function tabs_block(){
+    wp_register_script(
+        'tabs-script',
+        get_template_directory_uri() . '/js/block-tabs.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'tabs-editor-style',
+        get_template_directory_uri() . '/css/block-tabs-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'tabs-style',
+        get_template_directory_uri() . '/css/block-tabs-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/tabs', array(
+        'editor_script' => 'tabs-script',
+        'editor_style'  => 'tabs-editor-style',
+        'style'  => 'tabs-style',
+    ) );
+}
+add_action( 'init', 'tabs_block', 10, 0 );
