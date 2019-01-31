@@ -14,6 +14,16 @@ function load_dependencies(){
 }
 add_action( 'init', 'load_dependencies', 10, 0 );
 
+function fetchData($url){
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+    $result = curl_exec($ch);
+    curl_close($ch);
+    return $result;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // CONTAINER                                                                 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -163,15 +173,7 @@ function insta_feed_callback(){
 
         <div class="instagram__feed">';
 
-    function fetchData($url){
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        return $result;
-    }
+
             
     $url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' . get_option( 'insta_access_token' );
     $data = fetchData( $url );
@@ -349,16 +351,6 @@ function stylists_callback( $attributes, $content ){
     else
         $terms = array( 'elite-1' );
 
-    function fetchData($url){
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
-        $result = curl_exec($ch);
-        curl_close($ch);
-        return $result;
-    }
-
     $args = array(
         'posts_per_page'    => -1,
         'post_type'         => 'stylists',
@@ -378,13 +370,12 @@ function stylists_callback( $attributes, $content ){
     if( $query->have_posts() ){
         while( $query->have_posts() ){
             $query->the_post();
-            global $post;
             $blocks = '';
             $stylistTemplate = '';
             $attr = '';
 
-            if( has_blocks( $post->post_content ) ){
-                $blocks = parse_blocks( $post->post_content );
+            if( has_blocks( get_the_content() ) ){
+                $blocks = parse_blocks( get_the_content() );
             }
 
             if( $blocks ){
@@ -398,7 +389,6 @@ function stylists_callback( $attributes, $content ){
             if( $stylistTemplate ){
                 $attr = $stylistTemplate['attrs'];
             }
-
             
             $result .= '<div id="stylist-' . strtolower( get_the_title() ) . '" class="stylist">
                     <img class="stylist__image" src="' . $attr['imageUrl'] . '" alt="' . $attr['imageAlt'] . '" />
@@ -429,8 +419,8 @@ function stylists_callback( $attributes, $content ){
                 $data = fetchData( $url );
                 
                 $data = json_decode($data);
-                foreach($data->data as $post) {
-                    $result .= '<a target="blank" href="' . $post->link . '"><img src="' . $post->images->low_resolution->url . '" /></a>';
+                foreach($data->data as $thisData) {
+                    $result .= '<a target="blank" href="' . $thisData->link . '"><img src="' . $thisData->images->low_resolution->url . '" /></a>';
                 }
                                 
                 $result .= '</div>
@@ -443,6 +433,8 @@ function stylists_callback( $attributes, $content ){
             $result .= '</div>
                     </div>
                 </div>';
+
+            wp_reset_postdata();
         }
     }
 
