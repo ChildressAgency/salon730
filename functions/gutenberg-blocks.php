@@ -307,3 +307,178 @@ function tabs_block(){
     ) );
 }
 add_action( 'init', 'tabs_block', 10, 0 );
+
+///////////////////////////////////////////////////////////////////////////////
+// STYLISTS                                                                  //
+///////////////////////////////////////////////////////////////////////////////
+function stylists_block(){
+    wp_register_script(
+        'stylists-script',
+        get_template_directory_uri() . '/js/block-stylists.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'stylists-editor-style',
+        get_template_directory_uri() . '/css/block-stylists-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'stylists-style',
+        get_template_directory_uri() . '/css/block-stylists-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/stylists', array(
+        'editor_script' => 'stylists-script',
+        'editor_style'  => 'stylists-editor-style',
+        'style'  => 'stylists-style',
+        'render_callback' => 'stylists_callback'
+    ) );
+}
+add_action( 'init', 'stylists_block', 10, 0 );
+
+function stylists_callback( $attributes, $content ){
+    $result = '<div class="wp-block-childress-stylists stylists">
+                <div class="container">
+                    <div class="stylists__grid">';
+
+    if( isset( $attributes['category'] ) )
+        $terms = explode( ',', $attributes['category'] );
+    else
+        $terms = array( 'elite-1' );
+
+    function fetchData($url){
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return $result;
+    }
+
+    $args = array(
+        'posts_per_page'    => -1,
+        'post_type'         => 'stylists',
+        'orderby'           => 'date',
+        'order'             => 'ASC',
+        'tax_query'         => array(
+            array(
+                'taxonomy'  => 'stylist-category',
+                'field'     => 'slug',
+                'terms'     => $terms
+            )
+        )
+    );
+
+    $query = new WP_Query( $args );
+
+    if( $query->have_posts() ){
+        while( $query->have_posts() ){
+            $query->the_post();
+            global $post;
+            $blocks = '';
+            $stylistTemplate = '';
+            $attr = '';
+
+            if( has_blocks( $post->post_content ) ){
+                $blocks = parse_blocks( $post->post_content );
+            }
+
+            if( $blocks ){
+                foreach( $blocks as $block ){
+                    if( 'childress/stylist-template' == $block['blockName'] ){
+                        $stylistTemplate = $block;
+                    }
+                }
+            }
+
+            if( $stylistTemplate ){
+                $attr = $stylistTemplate['attrs'];
+            }
+
+            
+            $result .= '<div id="stylist-' . strtolower( get_the_title() ) . '" class="stylist">
+                    <img class="stylist__image" src="' . $attr['imageUrl'] . '" alt="' . $attr['imageAlt'] . '" />
+                    <p class="stylist__name">' . strtoupper( get_the_title() ) . '</p>
+                    <div class="stylist__modal">
+                        <div class="stylist__close-modal"></div>
+                        <div class="container">
+                            <div class="stylist__info">
+                                <img class="stylist__image" src="' . $attr['imageUrl'] . '" alt="' . $attr['imageAlt'] . '" />
+                                <div class="stylist__bio">
+                                    <h3 class="stylist__name">' . strtoupper( $attr['fullName'] ) . '</h3>
+                                    <p class="stylist__title">' . $attr['title'] . '</p>
+                                    <p class="stylist__desc">' . $attr['desc'] . '</p>';
+
+            if( $attr['appointmentUrl'] ){
+                $result .= '<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="' . $attr['appointmentUrl'] . '" target="blank">SET AN APPOINTMENT</a></div>';
+            }
+
+            $result .= '</div>
+                    </div>';
+
+            if( $attr['instaToken'] && $attr['instaUrl'] ){
+                $result .= '<div class="stylist__insta">
+                            <p>A SNIP OF MY INSTAGRAM <a href="' . $attr['instaUrl'] . '" target="blank"><i class="fab fa-instagram"></i></a></p>
+                            <div class="stylist__insta-feed">';
+                        
+                $url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=' . $attr['instaToken'];
+                $data = fetchData( $url );
+                
+                $data = json_decode($data);
+                foreach($data->data as $post) {
+                    $result .= '<a target="blank" href="' . $post->link . '"><img src="' . $post->images->low_resolution->url . '" /></a>';
+                }
+                                
+                $result .= '</div>
+                            <div class="stylist__insta-arrows">
+                                <div class="stylist__insta-prev"><</div>
+                                <div class="stylist__insta-next">></div>
+                            </div>
+                        </div>';
+            }
+            $result .= '</div>
+                    </div>
+                </div>';
+        }
+    }
+
+    $result .= '</div>
+            </div>
+        </div>';
+
+    return $result;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// STYLIST TEMPLATE                                                          //
+///////////////////////////////////////////////////////////////////////////////
+function stylist_template_block(){
+    wp_register_script(
+        'stylist-template-script',
+        get_template_directory_uri() . '/js/block-stylist-template.js',
+        array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components' )
+    );
+
+    wp_register_style(
+        'stylist-template-editor-style',
+        get_template_directory_uri() . '/css/block-stylist-template-editor-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    wp_register_style(
+        'stylist-template-style',
+        get_template_directory_uri() . '/css/block-stylist-template-style.css',
+        array( 'wp-edit-blocks' )
+    );
+
+    register_block_type('childress/stylist-template', array(
+        'editor_script' => 'stylist-template-script',
+        'editor_style'  => 'stylist-template-editor-style',
+        'style'  => 'stylist-template-style'
+    ) );
+}
+add_action( 'init', 'stylist_template_block', 10, 0 );

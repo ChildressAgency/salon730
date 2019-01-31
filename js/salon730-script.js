@@ -43,7 +43,20 @@ $(document).ready(function(){
         nextArrow:          $( '.instagram__next' ),
         prevArrow:          $( '.instagram__prev' ),
         autoplay:           true,
-        autoplaySpeed:      3000
+        autoplaySpeed:      4000
+    });
+
+    $( '.stylist__insta-feed' ).slick({
+        slidesToShow:       4,
+        slidesToScroll:     1,
+        infinite:           true,
+        variableWidth:      true,
+        dots:               false,
+        arrows:             true,
+        nextArrow:          $( '.stylist__insta-next' ),
+        prevArrow:          $( '.stylist__insta-prev' ),
+        autoplay:           true,
+        autoplaySpeed:      4000
     });
 
     /*
@@ -126,4 +139,34 @@ $(document).ready(function(){
         }
     } );
 
+
+    /*
+     * STYLIST MODAL
+     * 
+     * Show more info about a stylist when they are clicked on
+     */
+    $isModalOpen = false;
+    $( '.stylist__image' ).click( function(){
+        openModal( $( this ) );
+    } );
+    $( '.stylist__name' ).click( function(){
+        openModal( $( this ) );
+    } );
+
+    function openModal( stylist ){
+        $modal = stylist.parent().find( '.stylist__modal' );
+
+        if( !$isModalOpen ){
+            $modal.css( 'display', 'block' );
+            $isModalOpen = true;
+        } else {
+            $( '.stylist__modal' ).css( 'display', 'none' );
+            $modal.css( 'display', 'block' );
+        }
+    }
+
+    $( '.stylist__close-modal' ).click( function(){
+        $( this ).parent().css( 'display', 'none' );
+        $isModalOpen = false;
+    } );
 });

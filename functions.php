@@ -77,6 +77,52 @@
 	}
 	add_action( 'enqueue_block_editor_assets', 'custom_editor_styles' );
 
+	// Stylists Post Type
+	function create_post_type_stylists() {
+		register_post_type( 'stylists',
+			array(
+				'labels' => array(
+					'name' => __( 'Stylists' ),
+					'singular_name' => __( 'Stylist' )
+				),
+				'public' => true,
+				'has_archive' => false,
+				'show_in_rest' => true,
+				'template' => array(
+					array( 'childress/stylist-template', array() )
+				),
+				'templateLock' => 'all'
+			)
+		);
+	}
+	add_action( 'init', 'create_post_type_stylists', 0 );
+
+	// Stylist Category Taxonomy
+	function create_stylist_category_taxonomy(){
+		register_taxonomy(
+			'stylist-category',
+			'stylists',
+			array(
+				'hierarchical' => true,
+				'labels' => array( 
+					'name' => _x('Stylist Categories', 'taxonomy general name'),
+					'singular_name' => _x('Stylist Category', 'taxonomy singular name'),
+					'search_items' => __('Search Stylist Categories'),
+					'all_items' => __('All Stylist Categories'),
+					'parent_item' => __( 'Parent Stylist Category' ),
+					'parent_item_colon' => __( 'Parent Stylist Category:' ),
+					'edit_item' => __('Edit Stylist Category'),
+					'update_item' => __('Update Stylist Category'),
+					'add_new_item' => __('Add New Stylist Category'),
+					'new_item_name' => __( 'New Stylist Category Name' ),
+					'menu_name' => __('Stylist Categories')),
+				'rewrite' => array( 'slug' => 'stylists/category' ),
+				'show_in_rest' => true
+			)
+		);
+	}
+	add_action( 'init', 'create_stylist_category_taxonomy', 10 );
+
 	function salon730_color_palette(){
 		add_theme_support(
 			'editor-color-palette', array(
