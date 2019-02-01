@@ -24,13 +24,16 @@ $(document).ready(function(){
     /*
      * SLIDERS
      */
-    $('.featured-slider').slick({
+    $('.announcement-slider').slick({
         dots: false,
         infinite: true,
         autoplay: true,
         slidesToShow: 1,
-        arrows: false,
-        autoplaySpeed: 5000
+        arrows: true,
+        nextArrow: '.slick-arrow--next',
+        prevArrow: '.slick-arrow--prev',
+        autoplaySpeed: 5000,
+        adaptiveHeight: true
     });
 
     $( '.instagram__feed' ).slick({
@@ -115,27 +118,19 @@ $(document).ready(function(){
             $thatTab = $( this ).parent().next().children().eq(1);
 
             $thisTab.css( 'display', 'block' );
-            // $( this ).css( 'background-color', '#8bc53f' );
-            // $( this ).css( 'color', '#fff' );
             $( this ).addClass( 'tabs__title--active' );
 
             $thatTab.css( 'display', 'none' );
             $( this ).next().removeClass( 'tabs__title--active' );
-            // $( this ).next().css( 'background-color', '#fff' );
-            // $( this ).next().css( 'color', '#000' );
         } else {
             $thisTab = $( this ).parent().next().children().eq(1);
             $thatTab = $( this ).parent().next().children().eq(0);
 
             $thisTab.css( 'display', 'block' );
             $( this ).addClass( 'tabs__title--active' );
-            // $( this ).css( 'background-color', '#8bc53f' );
-            // $( this ).css( 'color', '#fff' );
 
             $thatTab.css( 'display', 'none' );
             $( this ).prev().removeClass( 'tabs__title--active' );
-            // $( this ).prev().css( 'background-color', '#fff' );
-            // $( this ).prev().css( 'color', '#000' );
         }
     } );
 
