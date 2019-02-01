@@ -314,6 +314,48 @@ h6
         max-width: 200px
 
 
+.wp-block-media-text
+    .wp-block-media-text__media
+        height: 100%
+        width: 100%
+
+    .wp-block-media-text__content
+        margin: 30px 0
+        padding: 15px 30px
+        position: relative
+
+        &::before,
+        &::after
+            background-color: $color-black
+            content: ' '
+            display: block
+            height: 2px
+            left: 50%
+            max-width: 500px
+            position: absolute
+            transform: translateX(-50%)
+            width: 90%
+
+        &::before
+            top: 0
+
+        &::after
+            bottom: 0
+
+        p
+            margin: 0 auto
+            margin-bottom: 15px
+            max-width: 500px
+            position: relative
+
+        .wp-block-button
+            margin-top: 30px
+
+    & > figure > img // sass-lint:disable-line force-element-nesting
+        height: 100%
+        object-fit: cover
+        width: 100%
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // FOOTER                                                                    //
