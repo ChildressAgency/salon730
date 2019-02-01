@@ -1,0 +1,35 @@
+@import '../_variables.sass'
+
+.wp-block-childress-collapsible
+    margin-bottom: 20px
+
+    .collapsible
+        &__title
+            @extend %font-roboto-bold
+            +font-size(24)
+            cursor: pointer
+            margin-left: 20px
+
+        &__arrow
+            left: 15px
+            position: absolute
+            transition: transform .3s ease
+
+        &__content
+            max-height: 0
+            overflow: hidden
+            transition: max-height .3s ease
+
+        &__subtitle
+            +font-size(20)
+            font-style: italic
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-collapsible
+        .collapsible
+            &__title
+                margin-left: 0
+
+            &__arrow
+                left: -10px
+

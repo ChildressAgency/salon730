@@ -1,0 +1,41 @@
+@import '../_variables.sass'
+
+.wp-block-childress-tabs
+    .tabs
+        &__titles
+            display: flex
+            margin-bottom: 30px
+
+        &__title
+            +fluid-font(24, 42, 280, 992)
+            align-items: center
+            background-color: $color-white
+            border: 2px solid $color-primary
+            color: $color-black
+            cursor: pointer
+            display: flex
+            flex: 1
+            justify-content: center
+            padding: 2px
+            text-align: center
+
+            &--active
+                background-color: $color-primary
+                border-color: transparent
+                color: $color-white
+
+.wp-block-childress-tab
+    &:nth-child(2)
+        display: none
+
+@media screen and ( min-width: 576px )
+    .wp-block-childress-tabs
+        .tabs
+            &__title
+                padding: 15px 30px
+
+@media screen and ( min-width: 992px )
+    .wp-block-childress-tabs
+        .tabs
+            &__title
+                +font-size(42)

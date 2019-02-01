@@ -1,0 +1,55 @@
+// sass-lint:disable no-duplicate-properties function-name-format
+
+%font-roboto
+    font-family: 'Roboto', sans-serif
+
+%font-roboto-bold
+    font-family: 'Roboto', sans-serif
+    font-weight: 700
+
+%font-roboto-condensed
+    font-family: 'Roboto Condensed', sans-serif
+    font-weight: 700
+
+%font-taviraj
+    font-family: 'Taviraj', serif
+
+%font-taviraj-italic
+    font-family: 'Taviraj', serif
+    font-style: italic
+
+%font-taviraj-bold
+    font-family: 'Taviraj', serif
+    font-weight: 700
+
+%font-taviraj-light
+    font-family: 'Taviraj', serif
+    font-weight: 400
+
+
+$color-primary: #8bc53f
+$color-primary-light: #98ca50
+$color-primary-dark: #698638
+
+$color-dark: #4d4d4d
+$color-darker: #333
+$color-shade: rgba(0, 0, 0, .5)
+
+$color-black: #000
+$color-white: #fff
+$color-white-transparent: rgba(255, 255, 255, 0)
+
+=font-size($size)
+    font-size: $size + px
+
+=fluid-font($min-font, $max-font, $min-viewport: 280, $max-viewport: 576)
+    font-size: calc((#{$min-font} * 1px) + #{strip-unit($max-font - $min-font)} * ((100vw - (#{$min-viewport} * 1px)) / #{strip-unit($max-viewport - $min-viewport)}))
+
+=dotted
+    background: linear-gradient(to right, $color-black 20%, $color-white-transparent 0%)
+    background-position: bottom
+    background-repeat: repeat-x
+    background-size: 8px 1px
+
+@function strip-unit($value)
+    @return $value / ($value * 0 + 1)

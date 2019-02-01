@@ -1,0 +1,33 @@
+@import '../_variables.sass'
+
+.wp-block-childress-action-boxes
+    .editor-block-list__layout
+        display: flex
+
+        & > .wp-block
+            flex: 1
+
+    .editor-inner-blocks
+        width: 100%
+
+.wp-block-childress-action-box
+    .action-box
+        &__inner
+            padding: 15px
+
+    .editor-plain-text
+        background-color: transparent
+        text-align: center
+
+    h3
+        .editor-plain-text
+            @extend %font-taviraj-bold
+            +font-size(35)
+
+    p
+        .editor-plain-text
+            @extend %font-roboto
+            +font-size(24)
+
+    .editor-inner-blocks
+        text-align: center

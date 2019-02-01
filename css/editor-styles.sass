@@ -1,0 +1,26 @@
+@import '../_variables.sass'
+
+.wp-block
+    max-width: 992px
+
+.wp-block-button
+    &__link
+        @extend %font-roboto-condensed
+        +font-size(20)
+        background-color: $color-primary
+        border: 2px solid transparent
+        border-radius: 20px
+        font-size: 20px
+        padding: 0 15px
+
+    &.is-style-outline
+        .wp-block-button__link
+            background-color: $color-white
+            border: 2px solid $color-primary
+            color: $color-primary
+
+div,
+div::before, //sass-lint:disable-line force-pseudo-nesting
+div::after //sass-lint:disable-line force-pseudo-nesting
+    background-position: center center
+    background-size: cover

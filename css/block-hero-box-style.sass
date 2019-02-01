@@ -1,0 +1,26 @@
+@import '../_variables.sass'
+
+.wp-block-childress-hero-box
+    .hero-box
+        @extend %font-roboto
+        +font-size(26)
+        align-items: center
+        background-color: $color-shade
+        color: $color-white
+        display: flex
+        flex-direction: column
+        padding: 60px
+        text-align: center
+
+        h2
+            @extend %font-taviraj-bold
+            +font-size(42)
+
+        hr
+            background-color: $color-primary
+            border: 0
+            height: 2px
+            width: 85%
+
+        &__inner
+            max-width: 720px
