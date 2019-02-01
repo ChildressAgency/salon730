@@ -9,6 +9,9 @@
         &--fluid
             max-width: 100%
 
+    .wpcf7-form
+        padding: 30px
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // 768                                                                       //
@@ -40,6 +43,19 @@
             &:hover
                 & > .navbar__drop-menu
                     display: block
+
+    .wp-block-columns.has-2-columns // sass-lint:disable-line force-element-nesting
+        flex-direction: row
+        flex-wrap: nowrap
+
+        .wp-block-column
+            margin-bottom: 0
+
+            &:first-of-type
+                margin-right: 30px
+
+            &:last-of-type
+                margin-left: 30px
 
     .footer
         flex-direction: row-reverse

@@ -30,7 +30,7 @@
     
     <header class="header">
         <div class="header__brand">
-            <img src="<?php echo get_option( 'logo' ); ?>" alt="Salon 730"/>
+            <a href="<?php echo home_url(); ?>"><img src="<?php echo get_option( 'logo' ); ?>" alt="Salon 730"/></a>
         </div>
         <div class="header__links">
             <a class="header__call" href="tel:540-373-6040">

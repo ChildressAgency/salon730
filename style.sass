@@ -50,6 +50,10 @@ h5
 h6
     +font-size(22)
 
+iframe
+    display: block
+    min-height: 300px
+
 ///////////////////////////////////////////////////////////////////////////////
 // HEADER                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
@@ -65,7 +69,8 @@ h6
         height: 100px
         margin-bottom: 30px
 
-        img
+        img,
+        a
             height: 100%
             width: auto
 
@@ -235,9 +240,20 @@ h6
 .wp-block-columns
     display: flex
 
+    &.has-2-columns
+        flex-direction: column
+
+        .wp-block-column
+            margin: 0
+
+            &:first-of-type
+                margin-bottom: 30px
+
+        figure
+            height: 100%
+
 .wp-block-column
     flex-grow: 1
-
 
 .has-green-background-color
     background-color: $color-primary
@@ -356,6 +372,46 @@ h6
         object-fit: cover
         width: 100%
 
+.wpcf7-form
+    align-items: center
+    display: flex
+    justify-content: center
+    padding: 15px
+    padding-right: 30px
+
+    h2
+        @extend %font-roboto-bold
+        +font-size(24)
+        margin-bottom: 15px
+
+    &-inner
+        display: flex
+        flex-direction: column
+
+    &-control
+        @extend %font-roboto
+        +font-size(20)
+        border: 1px solid $color-form-border
+        padding: 10px
+        width: 100%
+
+.wpcf7-submit
+    @extend %font-roboto-condensed
+    +font-size(20)
+    background-color: $color-primary
+    border: 2px solid transparent
+    border-radius: 20px
+    color: $color-white
+    cursor: pointer
+    padding: 0 15px
+    transition: border-color .2s ease, color .2s ease, background-color .2s ease
+    width: 50%
+
+    &:hover
+        background-color: $color-white
+        border-color: $color-primary
+        color: $color-primary
+        text-decoration: none
 
 ///////////////////////////////////////////////////////////////////////////////
 // FOOTER                                                                    //
