@@ -40,7 +40,7 @@ registerBlockType( 'childress/tabs', {
                             ['childress/tab'],
                             ['childress/tab']
                         ]}
-                        templateLock='all'
+                        templateLock={ 'all' }
                     />
                 </div>
             </div>
@@ -79,7 +79,7 @@ registerBlockType( 'childress/tab', {
                     template={[
                         ['core/paragraph', { placeholder: 'Tab' }]
                     ]}
-                    templateLock='false'
+                    templateLock={ false }
                 />
             </div>
         );
