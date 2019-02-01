@@ -32,7 +32,7 @@
 
             & > .container
                 max-height: 75vh
-                overflow: scroll
+                overflow-y: scroll
 
 
             .stylist
@@ -79,6 +79,11 @@
                     &-next
                         margin-left: 45px
                         margin-right: 30px
+
+                    .slick-slider
+                        .slick-list,
+                        .slick-track
+                            height: 100%
 
                     .slick-slide
                         margin: 0 15px
