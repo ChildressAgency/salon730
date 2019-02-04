@@ -8,10 +8,14 @@
             grid-template-columns: 1fr
 
     .stylist
+        display: flex
+        flex-direction: column
+
         &__name
             @extend %font-roboto-bold
             +font-size(24)
             cursor: pointer
+            margin-top: auto
 
         &__image
             cursor: pointer
