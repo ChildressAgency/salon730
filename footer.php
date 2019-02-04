@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="footer__copyright">
-                <p>SALON 730 &copy; <?php echo date('Y'); ?> | <a href="#_">PRIVACY POLICY</a> | Website Design by <a href="https://childressagency.com">Childress Agency</a></p>
+                <p><?php echo get_option( 'copyright' ); ?></p>
             </div>
         </div>
     </footer>
