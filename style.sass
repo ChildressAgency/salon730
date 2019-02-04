@@ -124,6 +124,7 @@ iframe
         font-weight: bold
         padding-bottom: 15px
         padding-top: 5px
+        text-align: center
 
         &::before
             display: none
@@ -145,13 +146,22 @@ iframe
 
     &__drop-menu
         background-color: $color-primary
-        display: none
-        margin-top: 15px
-        position: absolute
+        list-style: none
+        max-height: 0
+        overflow: hidden
+        position: relative
+        transition: max-height .3s ease
         z-index: 99
 
         li
             margin-bottom: 0
+
+            a
+                transition: background-color .3s ease
+
+                &:hover
+                    background-color: $color-primary-dark
+                    font-style: italic
 
         &:hover
             display: block

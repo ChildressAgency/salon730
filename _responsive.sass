@@ -38,11 +38,18 @@
         &__item
             margin-left: 15px
             margin-right: 15px
+            text-align: left
 
         &__drop
             &:hover
                 & > .navbar__drop-menu
                     display: block
+
+        &__drop-menu
+            display: none
+            margin-top: 15px
+            max-height: unset !important // sass-lint:disable-line no-important
+            position: absolute
 
     .wp-block-columns.has-2-columns // sass-lint:disable-line force-element-nesting
         flex-direction: row
