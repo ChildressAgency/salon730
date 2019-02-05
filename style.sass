@@ -83,6 +83,7 @@ iframe
         @extend %font-roboto-condensed
         +font-size(18)
         background-color: $color-primary
+        border: 2px solid transparent
         border-radius: 15px
         color: $color-white
         margin-bottom: 30px
@@ -92,6 +93,12 @@ iframe
 
         p
             margin-bottom: -5px
+
+        &:hover
+            background-color: transparent
+            border-color: $color-primary
+            color: $color-primary
+            text-decoration: none
 
     &__number
         @extend %font-roboto-bold
