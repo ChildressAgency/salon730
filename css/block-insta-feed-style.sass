@@ -28,7 +28,8 @@
         z-index: 99
 
         &:hover
-            color: $color-primary-light
+            background-color: $color-white
+            color: $color-primary
 
         i
             +font-size(50)
@@ -52,12 +53,24 @@
         .instagram__triangle
             border-left: 30px solid $color-white
 
+        &:hover
+            background-color: $color-white
+
+            .instagram__triangle
+                border-left: 30px solid $color-dark
+
     &__prev
         background-color: $color-darker
         bottom: 0
 
         .instagram__triangle
             border-right: 30px solid $color-white
+
+        &:hover
+            background-color: $color-white
+
+            .instagram__triangle
+                border-right: 30px solid $color-darker
 
     &__triangle
         border-bottom: 20px solid transparent

@@ -22,6 +22,7 @@
       register_setting( 'theme_options', 'hours-friday' );
       register_setting( 'theme_options', 'hours-saturday' );
       register_setting( 'theme_options', 'hours-sunday' );
+      register_setting( 'theme_options', 'copyright' );
     }
     add_action( 'admin_init', 'register_mysettings' );
 
@@ -160,6 +161,14 @@
                     <tr valign="top">
                         <th scope="row">Sunday</th>
                         <td><input type="text" name="hours-sunday" value="<?php echo esc_attr( get_option('hours-sunday') ); ?>" size="60" /></td>
+                    </tr>
+                </table>
+
+                <h2>Footer</h2>
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row">Copyright</th>
+                        <td><input type="text" name="copyright" value="<?php echo esc_attr( get_option('copyright') ); ?>" size="60" /></td>
                     </tr>
                 </table>
 

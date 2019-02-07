@@ -3,9 +3,9 @@
         <div class="footer__social">
             <p>Follow Us</p>
             <div class="footer__icons">
-                <a href="<?php echo get_option('facebook'); ?>"><i class="fab fa-facebook-square"></i></a>
-                <a href="<?php echo get_option('twitter'); ?>"><i class="fab fa-twitter-square"></i></a>
-                <a href="<?php echo get_option('linkedin'); ?>"><i class="fab fa-linkedin"></i></a>
+                <?php if( get_option('facebook') ): ?><a href="<?php echo get_option('facebook'); ?>"><i class="fab fa-facebook-square"></i></a><?php endif; ?>
+                <?php if( get_option('twitter') ): ?><a href="<?php echo get_option('twitter'); ?>"><i class="fab fa-twitter-square"></i></a><?php endif; ?>
+                <?php if( get_option('linkedin') ): ?><a href="<?php echo get_option('linkedin'); ?>"><i class="fab fa-linkedin"></i></a><?php endif; ?>
             </div>
         </div>
         <div class="footer__main">
@@ -34,7 +34,7 @@
                 </div>
             </div>
             <div class="footer__copyright">
-                <p>SALON 730 &copy; <?php echo date('Y'); ?> | <a href="#_">PRIVACY POLICY</a> | Website Design by <a href="https://childressagency.com">Childress Agency</a></p>
+                <p><?php echo get_option( 'copyright' ); ?></p>
             </div>
         </div>
     </footer>

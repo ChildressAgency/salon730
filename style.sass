@@ -50,6 +50,10 @@ h5
 h6
     +font-size(22)
 
+iframe
+    display: block
+    min-height: 300px
+
 ///////////////////////////////////////////////////////////////////////////////
 // HEADER                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
@@ -65,7 +69,8 @@ h6
         height: 100px
         margin-bottom: 30px
 
-        img
+        img,
+        a
             height: 100%
             width: auto
 
@@ -78,6 +83,7 @@ h6
         @extend %font-roboto-condensed
         +font-size(18)
         background-color: $color-primary
+        border: 2px solid transparent
         border-radius: 15px
         color: $color-white
         margin-bottom: 30px
@@ -87,6 +93,12 @@ h6
 
         p
             margin-bottom: -5px
+
+        &:hover
+            background-color: transparent
+            border-color: $color-primary
+            color: $color-primary
+            text-decoration: none
 
     &__number
         @extend %font-roboto-bold
@@ -119,6 +131,7 @@ h6
         font-weight: bold
         padding-bottom: 15px
         padding-top: 5px
+        text-align: center
 
         &::before
             display: none
@@ -140,13 +153,22 @@ h6
 
     &__drop-menu
         background-color: $color-primary
-        display: none
-        margin-top: 15px
-        position: absolute
+        list-style: none
+        max-height: 0
+        overflow: hidden
+        position: relative
+        transition: max-height .3s ease
         z-index: 99
 
         li
             margin-bottom: 0
+
+            a
+                transition: background-color .3s ease
+
+                &:hover
+                    background-color: $color-primary-dark
+                    font-style: italic
 
         &:hover
             display: block
@@ -235,9 +257,20 @@ h6
 .wp-block-columns
     display: flex
 
+    &.has-2-columns
+        flex-direction: column
+
+        .wp-block-column
+            margin: 0
+
+            &:first-of-type
+                margin-bottom: 30px
+
+        figure
+            height: 100%
+
 .wp-block-column
     flex-grow: 1
-
 
 .has-green-background-color
     background-color: $color-primary
@@ -314,6 +347,93 @@ h6
         max-width: 200px
 
 
+.wp-block-media-text
+    .wp-block-media-text__media
+        height: 100%
+        width: 100%
+
+    .wp-block-media-text__content
+        margin: 30px 0
+        padding: 15px 30px
+        position: relative
+
+        &::before,
+        &::after
+            background-color: $color-black
+            content: ' '
+            display: block
+            height: 2px
+            left: 50%
+            max-width: 500px
+            position: absolute
+            transform: translateX(-50%)
+            width: 90%
+
+        &::before
+            top: 0
+
+        &::after
+            bottom: 0
+
+        p
+            margin: 0 auto
+            margin-bottom: 15px
+            max-width: 500px
+            position: relative
+
+        .wp-block-button
+            margin-top: 30px
+
+    & > figure > img // sass-lint:disable-line force-element-nesting
+        height: 100%
+        object-fit: cover
+        width: 100%
+
+.wpcf7-form
+    align-items: center
+    display: flex
+    justify-content: center
+    padding: 15px
+    padding-right: 30px
+
+    h2
+        @extend %font-roboto-bold
+        +font-size(24)
+        margin-bottom: 15px
+
+    &-inner
+        display: flex
+        flex-direction: column
+
+    &-control
+        @extend %font-roboto
+        +font-size(20)
+        border: 1px solid $color-form-border
+        padding: 10px
+        width: 100%
+
+.wpcf7-submit
+    @extend %font-roboto-condensed
+    +font-size(20)
+    background-color: $color-primary
+    border: 2px solid transparent
+    border-radius: 20px
+    color: $color-white
+    cursor: pointer
+    padding: 0 15px
+    transition: border-color .2s ease, color .2s ease, background-color .2s ease
+    width: 50%
+
+    &:hover
+        background-color: $color-white
+        border-color: $color-primary
+        color: $color-primary
+        text-decoration: none
+
+.wpcf7-recaptcha
+    border: 0
+    margin-bottom: 15px
+    padding: 0
 
 ///////////////////////////////////////////////////////////////////////////////
 // FOOTER                                                                    //
