@@ -47,15 +47,14 @@
         .slide.slick-slide // sass-lint:disable-line force-element-nesting
             .container
                 +fluid-font(20, 34, 576, 1200)
-                flex-direction: row
+                display: grid
+                grid-template-columns: repeat(2, 1fr)
                 padding: 0 15px
 
         p
-            flex: 1
             margin-right: 30px
 
         img
-            flex: 1
             max-width: 100%
             width: unset
 
@@ -64,8 +63,12 @@
 
 @media screen and ( min-width: 768px )
     .wp-block-childress-announcement-slider
+        .slide.slick-slide // sass-lint:disable-line force-element-nesting
+            .container
+                grid-template-columns: repeat(3, 1fr)
+
         p
-            flex: 2
+            grid-column: span 2
             margin-right: 60px
 
         .slick-arrow
@@ -73,8 +76,12 @@
 
 @media screen and ( min-width: 992px )
     .wp-block-childress-announcement-slider
+        .slide.slick-slide // sass-lint:disable-line force-element-nesting
+            .container
+                grid-template-columns: repeat(4, 1fr)
+
         p
-            flex: 3
+            grid-column: span 3
 
 @media screen and ( min-width: 1200px )
     .wp-block-childress-announcement-slider
