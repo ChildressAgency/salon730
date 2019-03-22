@@ -404,7 +404,7 @@ function stylists_callback( $attributes, $content ){
                                     <p class="stylist__desc">' . $attr['desc'] . '</p>';
 
             if( $attr['appointmentUrl'] ){
-                $result .= '<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="' . $attr['appointmentUrl'] . '" target="blank">SET AN APPOINTMENT</a></div>';
+                $result .= '<div class="wp-block-button is-style-outline"><a class="wp-block-button__link" href="' . $attr['appointmentUrl'] . '" target="blank">REQUEST AN APPOINTMENT</a></div>';
             }
 
             $result .= '</div>
